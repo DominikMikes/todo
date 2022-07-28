@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "ng-todo": "apps/ng-todo",
+    "ng-todo-e2e": "apps/ng-todo-e2e"
+  }
+}
