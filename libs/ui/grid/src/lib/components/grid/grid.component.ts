@@ -25,6 +25,10 @@ export class GridComponent {
   // Example load data from sever
   onGridReady(params: GridReadyEvent) {
     console.log('grid ready');
+    // this.rowData$.subscribe(data => {
+    //   console.log('grid ready', data);
+    //   // this.rowData$ = [...data];
+    // })
   }
 
   // Example of consuming Grid Event
@@ -35,7 +39,7 @@ export class GridComponent {
   onSelectionChanged(event: SelectionChangedEvent) {
     const selectedData = this.agGrid.api.getSelectedRows();
     this.gridActionsService.onSelectionChanged(selectedData);
-    console.log('Selection Changed', selectedData);
+    // console.log('Selection Changed', selectedData);
   }
 
   // Example using Grid's API

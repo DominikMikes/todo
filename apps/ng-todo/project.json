@@ -20,7 +20,9 @@
           "ag-grid-community/styles/ag-grid.css",
           "ag-grid-community/styles/ag-theme-alpine.css"
         ],
-        "scripts": []
+        "scripts": [
+          "node_modules/bootstrap/dist/js/bootstrap.min.js"
+        ]
       },
       "configurations": {
         "production": {

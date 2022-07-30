@@ -1,7 +1,11 @@
-<p>todo-list works!</p>
-
-<button type="button" class="btn btn-danger" (click)="deleteSelected()">Delete Selected</button>
-
+<div class="row">
+  <div class="col-md-1 mb-2">
+    <button type="button" class="btn btn-success px-3 disabled"><i class="fa fa-plus" aria-hidden="true"></i></button>
+  </div>
+  <div class="col-md-1 mb-2">
+    <button type="button" class="btn btn-danger px-3" (click)="deleteSelected()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+  </div>
+</div>
 <div class="todo-grid">
   <todo-ui-grid
     [columnDefs]="columnDefs"

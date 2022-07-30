@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
+import { ColDef } from 'ag-grid-community';
 import { GridActionsService } from 'libs/ui/grid/src/lib/services/grid-actions.service';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { todos } from '../../mock-data/todo.mock';
+import { ITodo } from '../../model/todo';
 
 @Component({
   selector: 'todo-list',
@@ -30,19 +31,32 @@ export class TodoListComponent implements OnInit {
     editable: true,
   };
 
-  source = of(todos);
+  private selectedTodoRows!: any[];
+
+  private todoList: ITodo[] = [...todos]
 
   // Data that gets displayed in the grid
-  public rowData$!: Observable<any[]>;
+  // public rowData$!: BehaviorSubject<ITodo[]>;
+  private rowDataSource = new BehaviorSubject<ITodo[]>([]);
+  rowData$ = this.rowDataSource.asObservable();
 
   constructor(private http: HttpClient, private gridActionsService: GridActionsService) { }
 
   ngOnInit(): void {
-    this.rowData$ = this.source; //this.http
-    // .get<any[]>(this.source); //'https://www.ag-grid.com/example-assets/row-data.json'
+    this.rowDataSource.next(todos);
+
+    this.gridActionsService.selectedRows.subscribe(data => {
+      this.selectedTodoRows = [...data];
+      console.log('data', this.selectedTodoRows);
+    });
   }
 
   deleteSelected(): void {
-    this.rowData$
+    this.todoList = this.todoList.filter(todo => {
+      return !this.selectedTodoRows.map(rows => rows.id).includes(todo.id);
+    })
+    this.rowDataSource.next(
+      [...this.todoList]
+    );
   }
 }
