@@ -51,6 +51,11 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  refreshList(): void {
+    this.todoList = [...todos];
+    this.rowDataSource.next([...this.todoList]);
+  }
+
   deleteSelected(): void {
     this.todoList = this.todoList.filter(todo => {
       return !this.selectedTodoRows.map(rows => rows.id).includes(todo.id);
