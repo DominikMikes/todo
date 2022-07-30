@@ -12,16 +12,21 @@ import { todos } from '../../mock-data/todo.mock';
 export class TodoListComponent implements OnInit {
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' }
+    { field: 'id' },
+    { field: 'description' },
+    { field: 'status' },
+    {
+      field: 'active', cellRenderer: (param: any) => {
+        return (param.data.active) ? 'X' : '-';
+      }
+    }
   ];
 
   // DefaultColDef sets props common to all Columns
   public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
   };
 
   source = of(todos);
@@ -34,5 +39,9 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.rowData$ = this.source; //this.http
     // .get<any[]>(this.source); //'https://www.ag-grid.com/example-assets/row-data.json'
+  }
+
+  deleteSelected(): void {
+    this.rowData$
   }
 }

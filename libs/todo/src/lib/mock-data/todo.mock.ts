@@ -23,6 +23,6 @@ export const todos: ITodo[] = [
     id: 4,
     description: 'todo 4',
     status: '',
-    active: true
+    active: false
   }
 ];
