@@ -1,5 +1,9 @@
 <p>todo-list works!</p>
 <div class="todo-grid">
-  <todo-ui-grid></todo-ui-grid>
+  <todo-ui-grid
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData$]="rowData$">
+  </todo-ui-grid>
 </div>
 
