@@ -14,7 +14,12 @@
         "tsConfig": "apps/ng-todo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/ng-todo/src/favicon.ico", "apps/ng-todo/src/assets"],
-        "styles": ["apps/ng-todo/src/styles.scss"],
+        "styles": [
+          "apps/ng-todo/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "ag-grid-community/styles/ag-grid.css",
+          "ag-grid-community/styles/ag-theme-alpine.css"
+        ],
         "scripts": []
       },
       "configurations": {

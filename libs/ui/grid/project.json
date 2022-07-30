@@ -1,0 +1,38 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/ui/grid/src",
+  "prefix": "todo",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/ui/grid"],
+      "options": {
+        "project": "libs/ui/grid/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ui/grid/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ui/grid/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui/grid"],
+      "options": {
+        "jestConfig": "libs/ui/grid/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/ui/grid/**/*.ts", "libs/ui/grid/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

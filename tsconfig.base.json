@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@todo/todo": ["libs/todo/src/index.ts"],
+      "@todo/ui/grid": ["libs/ui/grid/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
