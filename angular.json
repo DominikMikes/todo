@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "ng-todo": "apps/ng-todo",
-    "ng-todo-e2e": "apps/ng-todo-e2e"
+    "ng-todo-e2e": "apps/ng-todo-e2e",
+    "todo": "libs/todo",
+    "ui-grid": "libs/ui/grid"
   }
 }
