@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { todos } from '../../mock-data/todo.mock';
 
 @Component({
   selector: 'todo-list',
@@ -23,18 +24,15 @@ export class TodoListComponent implements OnInit {
     editable: true
   };
 
+  source = of(todos);
+
   // Data that gets displayed in the grid
   public rowData$!: Observable<any[]>;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.rowData$ = this.http
-      .get<any[]>('https://www.ag-grid.com/example-assets/row-data.json');
+    this.rowData$ = this.source; //this.http
+    // .get<any[]>(this.source); //'https://www.ag-grid.com/example-assets/row-data.json'
   }
-  // Example load data from sever
-  // onGridReady(params: GridReadyEvent) {
-  //   this.rowData$ = this.http
-  //     .get<any[]>('https://www.ag-grid.com/example-assets/row-data.json');
-  // }
 }

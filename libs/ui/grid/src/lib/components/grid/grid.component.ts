@@ -20,10 +20,7 @@ export class GridComponent {
   constructor(private http: HttpClient) { }
 
   // Example load data from sever
-  onGridReady(params: GridReadyEvent) {
-    // this.rowData$ = this.http
-    //   .get<any[]>('https://www.ag-grid.com/example-assets/row-data.json');
-  }
+  onGridReady(params: GridReadyEvent) { }
 
   // Example of consuming Grid Event
   onCellClicked(e: CellClickedEvent): void {
