@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
+import { GridActionsService } from 'libs/ui/grid/src/lib/services/grid-actions.service';
 import { Observable, of } from 'rxjs';
 import { todos } from '../../mock-data/todo.mock';
 
@@ -34,7 +35,7 @@ export class TodoListComponent implements OnInit {
   // Data that gets displayed in the grid
   public rowData$!: Observable<any[]>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private gridActionsService: GridActionsService) { }
 
   ngOnInit(): void {
     this.rowData$ = this.source; //this.http

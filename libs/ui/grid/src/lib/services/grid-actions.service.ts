@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class GridActionsService {
 
   // constructor() { }
+  private selectedRowsSource = new BehaviorSubject([]);
+  selectedRows = this.selectedRowsSource.asObservable();
 
-  onSelectionChanged(selectedData: any): Observable<any[]> {
-    return of(selectedData);
+  onSelectionChanged(selectedData: any) {
+    this.selectedRowsSource.next(selectedData);
   }
 }
