@@ -82,3 +82,6 @@ Deploy steps:
 Deploy folder `"public": "dist/apps/ng-todo"`.
 
 Visit the app: [Todo](https://todo-7671a.web.app/)
+
+Usefull documentation for Firebase hosting on Github:<br>
+https://github.com/marketplace/actions/deploy-to-firebase-hosting
