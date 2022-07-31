@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent, ColDef, GridApi, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
+import { CellClickedEvent, ColDef, GridReadyEvent, SelectionChangedEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
 import { GridActionsService } from '../../services/grid-actions.service';
 

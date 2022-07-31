@@ -9,4 +9,4 @@ import { HttpClientModule } from '@angular/common/http';
   exports: [GridComponent],
   declarations: [GridComponent],
 })
-export class UiGridModule {}
+export class UiGridModule { }
