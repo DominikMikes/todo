@@ -22,14 +22,33 @@ class ReactList extends React.Component<any, any> {
       <button data-todo-id={todo.id} onClick={() => this.removeTodo(todo.id)}>X</button>
     </div>;
   }
+  addTodo() {
+    const todoId = this.state['todos'].length + 1;
+    const newTodo: ITodo = {
+      id: todoId,
+      description: `todo ${todoId}`,
+      status: `To Do NEW`,
+      active: false
+    };
+
+    const newTodos = [...this.state['todos']];
+    newTodos.push(newTodo);
+
+    this.setState({
+      todos: newTodos
+    });
+  }
   override render() {
     return (
       <div className={styles['container']}>
-        <div>TOOLBAR BUTTONS</div>
-        {this.state['todos'].map((todo: ITodo) => {
-          return this.getTodoRow(todo);
-        })}
-      </div>
+        <button onClick={() => this.addTodo()}>Add +</button>
+        {
+          this.state['todos'].map((todo: ITodo) => {
+            return this.getTodoRow(todo);
+          })
+        }
+
+      </div >
     );
   }
 
