@@ -1,15 +1,32 @@
 import React from "react";
 import styles from './react-list.module.scss';
 import { ITodo } from "./todo";
-import { TODOS } from './todos.mock';
+// import { TODOS } from './todos.mock';
+
+import { TodoService } from './todo-service';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class ReactList extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
+    const initialList: ITodo[] = [];
     this.state = {
-      todos: TODOS
-    }
+      todos: initialList
+    };
+  }
+  override componentWillMount() {
+    this.getTodos();
+  }
+  todoService = new TodoService();
+  getTodos() {
+    this.todoService.getTodos().then((todos: ITodo[]) => {
+      if (todos) {
+        this.setState({
+          todos: [...todos]
+        })
+      }
+    });
+
   }
   removeTodo(id: number): any {
     const filtered = this.state['todos'].filter((todo: ITodo) => { return todo.id !== id });
@@ -35,7 +52,7 @@ class ReactList extends React.Component<any, any> {
   }
   refreshTodo() {
     this.setState({
-      todos: TODOS
+      todos: [] // TODO: fix refresh
     });
   }
   getTodoRow(todo: ITodo) {

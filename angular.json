@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "express-backend": "apps/express-backend",
     "ng-todo": "apps/ng-todo",
     "ng-todo-e2e": "apps/ng-todo-e2e",
     "react-list": "libs/react-list",
