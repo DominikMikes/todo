@@ -17,11 +17,6 @@ class ReactList extends React.Component<any, any> {
       todos: filtered
     });
   }
-  getTodoRow(todo: ITodo) {
-    return <div key={todo.id}>{todo.description} - {todo.status}
-      <button data-todo-id={todo.id} onClick={() => this.removeTodo(todo.id)}>X</button>
-    </div>;
-  }
   addTodo() {
     const todoId = this.state['todos'].length + 1;
     const newTodo: ITodo = {
@@ -38,10 +33,21 @@ class ReactList extends React.Component<any, any> {
       todos: newTodos
     });
   }
+  refreshTodo() {
+    this.setState({
+      todos: TODOS
+    });
+  }
+  getTodoRow(todo: ITodo) {
+    return <div key={todo.id}>{todo.description} - {todo.status}
+      <button data-todo-id={todo.id} onClick={() => this.removeTodo(todo.id)}>X</button>
+    </div>;
+  }
   override render() {
     return (
       <div className={styles['container']}>
         <button onClick={() => this.addTodo()}>Add +</button>
+        <button onClick={() => this.refreshTodo()}>Refresh</button>
         {
           this.state['todos'].map((todo: ITodo) => {
             return this.getTodoRow(todo);
