@@ -4,6 +4,9 @@
   "projects": {
     "ng-todo": "apps/ng-todo",
     "ng-todo-e2e": "apps/ng-todo-e2e",
+    "react-list": "libs/react-list",
+    "react-todo": "apps/react-todo",
+    "react-todo-e2e": "apps/react-todo-e2e",
     "todo": "libs/todo",
     "ui-grid": "libs/ui/grid"
   }
