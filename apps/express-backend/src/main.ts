@@ -6,13 +6,19 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as cors from 'cors';
+import bodyParser = require('body-parser');
 
 import { TODOS } from './app/mock-data/todos';
 import { ITodo } from './app/models/todo.interface';
 
 
+
 const app = express();
+// cors needed to be compliant
 app.use(cors());
+// bodyparser needed to use body from post api
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const todoList = [...TODOS];
 
@@ -35,12 +41,11 @@ app.put('/todos/:id', (req, res) => {
     }
   });
 
-
   res.send('Got a PUT request')
 });
 
 app.post('/todos', (req, res) => {
-  const newTodo = req.params as ITodo;
+  const newTodo = req.body as ITodo;
   todoList.push(newTodo);
 
   return res.send();

@@ -15,6 +15,22 @@ export class TodoService {
             return [];
         });
     }
+    addTodo(todo: ITodo) {
+        return fetch(`${url}todos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todo)
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            return data.todos;
+        }).catch(err => {
+            console.error('ERROR', err);
+            return [];
+        });
+    }
     // removeTodo(id) {
 
     // }
