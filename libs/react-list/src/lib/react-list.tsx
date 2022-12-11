@@ -34,7 +34,7 @@ class ReactList extends React.Component<any, any> {
       todos: filtered
     });
   }
-  addTodo() {
+  async addTodo() {
     const todoId = this.state['todos'].length + 1;
     const newTodo: ITodo = {
       id: todoId,
@@ -42,18 +42,14 @@ class ReactList extends React.Component<any, any> {
       status: `To Do NEW`,
       active: false
     };
-
-    const newTodos = [...this.state['todos']];
-    newTodos.push(newTodo);
-
+    await this.todoService.addTodo(newTodo);
+    const todoList = await this.todoService.getTodos();
     this.setState({
-      todos: newTodos
+      todos: todoList
     });
   }
   refreshTodo() {
-    this.setState({
-      todos: [] // TODO: fix refresh
-    });
+    this.getTodos();
   }
   getTodoRow(todo: ITodo) {
     return <div key={todo.id}>{todo.description} - {todo.status}
