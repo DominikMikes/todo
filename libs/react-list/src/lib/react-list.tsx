@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { v4 as uuid } from 'uuid';
 import styles from './react-list.module.scss';
 import { ITodo } from "./todo";
 import { TodoService } from './todo-service';
@@ -12,7 +13,7 @@ export function ReactList() {
   });
 
   const addTodo = async () => {
-    const todoId = todos.length + 1;
+    const todoId = uuid();
     const newTodo: ITodo = {
       id: todoId,
       description: `todo ${todoId}`,
@@ -20,11 +21,11 @@ export function ReactList() {
       active: false
     };
     await todoService.addTodo(newTodo);
-    await todoService.getTodos();
-    // setTodos(todoList);
+    getTodos();
   };
 
-  const removeTodo = (id: number) => {
+  const removeTodo = async (id: string) => {
+    await todoService.removeTodo(id);
     const filtered = todos.filter((todo: ITodo) => { return todo.id !== id });
     setTodos(filtered);
   };

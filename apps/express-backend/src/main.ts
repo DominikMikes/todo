@@ -33,6 +33,13 @@ app.get('/todos', (req, res) => {
   res.json({ todos: todoList });
 });
 
+app.post('/todos', (req, res) => {
+  const newTodo = req.body as ITodo;
+  todoList.push(newTodo);
+
+  return res.send(`Updated todo ${newTodo.id}`);
+});
+
 app.put('/todos/:id', (req, res) => {
   const todo = req.params as unknown as ITodo
   todoList.forEach(t => {
@@ -44,16 +51,9 @@ app.put('/todos/:id', (req, res) => {
   res.send(`Updated todo ${todo.id}`);
 });
 
-app.post('/todos', (req, res) => {
-  const newTodo = req.body as ITodo;
-  todoList.push(newTodo);
-
-  return res.send(`Updated todo ${newTodo.id}`);
-});
-
 app.delete('/todos/:id', (req, res) => {
   const { id } = req.params;
-  const todoId = todoList.findIndex(todo => todo.id == parseInt(id));
+  const todoId = todoList.findIndex(todo => todo.id === id);
 
   todoList.splice(todoId, 1);
   return res.send(`Deleted todo ${todoId}`);

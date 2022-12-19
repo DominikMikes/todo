@@ -22,19 +22,37 @@ export class TodoService {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(todo)
-        }).then(res => {
+        })
+        .then(res => {
             return res.json();
-        }).then(data => {
+        })
+        .then(data => {
             return data.todos;
-        }).catch(err => {
+        })
+        .catch(err => {
             console.error('ERROR', err);
             return [];
+
         });
     }
-    // removeTodo(id) {
-
-    // }
-    // updateTodo(todo: ITodo) {
-
-    // }
+    removeTodo(id: string) {
+      return fetch(`${url}todos/${id}`, {
+        method: 'DELETE'
+      }).then(() => {
+        return true;
+      });
+    }
+    updateTodo(todo: ITodo) {
+      return fetch(`${url}todos/${todo.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(todo)
+      })
+      .then(res => res.json())
+      .then(data => {
+        return data;
+      })
+      .catch(err => {
+        console.error('ERROR: ', err);
+      })
+    }
 }
