@@ -30,7 +30,7 @@ app.get('/api', (req, res) => {
 
 // TODO routes
 app.get('/todos', (req, res) => {
-  res.send({ todos: todoList });
+  res.json({ todos: todoList });
 });
 
 app.put('/todos/:id', (req, res) => {
@@ -41,14 +41,14 @@ app.put('/todos/:id', (req, res) => {
     }
   });
 
-  res.send('Got a PUT request')
+  res.send(`Updated todo ${todo.id}`);
 });
 
 app.post('/todos', (req, res) => {
   const newTodo = req.body as ITodo;
   todoList.push(newTodo);
 
-  return res.send();
+  return res.send(`Updated todo ${newTodo.id}`);
 });
 
 app.delete('/todos/:id', (req, res) => {
@@ -56,7 +56,7 @@ app.delete('/todos/:id', (req, res) => {
   const todoId = todoList.findIndex(todo => todo.id == parseInt(id));
 
   todoList.splice(todoId, 1);
-  return res.send();
+  return res.send(`Deleted todo ${todoId}`);
 });
 
 const port = process.env.port || 3333;
