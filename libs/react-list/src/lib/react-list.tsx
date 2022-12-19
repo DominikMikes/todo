@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from './react-list.module.scss';
 import { ITodo } from "./todo";
 import { TodoService } from './todo-service';
@@ -6,6 +6,10 @@ import { TodoService } from './todo-service';
 export function ReactList() {
   const [todos, setTodos] = React.useState([]);
   const todoService = new TodoService();
+
+  useEffect(() => {
+    // getTodos();
+  });
 
   const addTodo = async () => {
     const todoId = todos.length + 1;
@@ -16,8 +20,8 @@ export function ReactList() {
       active: false
     };
     await todoService.addTodo(newTodo);
-    const todoList = await todoService.getTodos();
-    setTodos(todoList);
+    await todoService.getTodos();
+    // setTodos(todoList);
   };
 
   const removeTodo = (id: number) => {
@@ -35,13 +39,16 @@ export function ReactList() {
     </div>;
   };
 
-  const getTodos = () => {
-    todoService.getTodos().then((todoList: any) => {
-      if (todoList.length > 0) {
-        setTodos(todoList);
-      }
-    });
+  const getTodos = async () => {
+    const todoList = await todoService.getTodos();
+    if (todoList.length > 0) {
+      setTodos(todoList);
+    }
   };
+
+  if (todos.length === 0) {
+    getTodos();
+  }
 
   return <div className={styles['container']}>
     <button onClick={() => addTodo()}>Add +</button>
