@@ -2,60 +2,19 @@
 
 # Todo
 
-This project was generated using [Nx](https://nx.dev).
-
-
-🔎 **Smart, Fast and Extensible Build System**
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@todo/mylib`.
+This project is used for many todo apps with many different frameworks.
 
 ## Development server
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `ng serve express-backend` for a dev server with an express backend running.
 
-## Code scaffolding
+Run `ng serve react-todo` for a dev server with a react app running. Navigate to http://localhost:4201/. The app will automatically reload if you change any of the source files.
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+Run `ng serve ng-todo` for a dev server with an angular app running. Navigate to http://localhost:4202/. The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build react-todo`, `ng build ng-todo` or `ng build express-backend` to build the projects. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
@@ -72,9 +31,10 @@ Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 ## Understand your workspace
 
 Run `nx graph` to see a diagram of the dependencies of your projects.
+
 <br><br>
 # 🚀 Deployment and Hosting
-Hosted app with Firebase<br>
+Hosted app (ng-todo only) with Firebase<br>
 Deploy steps:
 1. `nx build --prod`
 2. `firebase deploy`
