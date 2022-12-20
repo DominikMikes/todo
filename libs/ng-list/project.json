@@ -1,0 +1,24 @@
+{
+  "name": "ng-list",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ng-list/src",
+  "prefix": "todo",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ng-list"],
+      "options": {
+        "jestConfig": "libs/ng-list/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/ng-list/**/*.ts", "libs/ng-list/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
