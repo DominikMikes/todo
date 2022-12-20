@@ -1,15 +1,17 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {
-    "data-access-todo": "libs/data-access-todo",
-    "express-backend": "apps/express-backend",
-    "ng-list": "libs/ng-list",
-    "ng-todo": "apps/ng-todo",
-    "ng-todo-e2e": "apps/ng-todo-e2e",
-    "react-list": "libs/react-list",
-    "react-todo": "apps/react-todo",
-    "react-todo-e2e": "apps/react-todo-e2e",
-    "ui-grid": "libs/ui/grid"
-  }
+	"$schema": "./node_modules/nx/schemas/workspace-schema.json",
+	"version": 2,
+	"projects": {
+		"data-access-todo": "libs/data-access-todo",
+		"express-backend": "apps/express-backend",
+		"next-todo": "apps/next-todo",
+		"next-todo-e2e": "apps/next-todo-e2e",
+		"ng-list": "libs/ng-list",
+		"ng-todo": "apps/ng-todo",
+		"ng-todo-e2e": "apps/ng-todo-e2e",
+		"react-list": "libs/react-list",
+		"react-todo": "apps/react-todo",
+		"react-todo-e2e": "apps/react-todo-e2e",
+		"ui-grid": "libs/ui/grid"
+	}
 }
