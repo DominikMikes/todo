@@ -18,10 +18,11 @@ export class TodoListComponent implements OnInit {
     { field: 'description' },
     { field: 'status' },
     {
-      field: 'active', cellRenderer: (param: any) => {
-        return (param.data.active) ? 'X' : '-';
-      }
-    }
+      field: 'active',
+      cellRenderer: (param: any) => {
+        return param.data.active ? 'X' : '-';
+      },
+    },
   ];
 
   // DefaultColDef sets props common to all Columns
@@ -33,19 +34,22 @@ export class TodoListComponent implements OnInit {
 
   private selectedTodoRows!: any[];
 
-  private todoList: ITodo[] = [...todos]
+  private todoList: ITodo[] = [...todos];
 
   // Data that gets displayed in the grid
   // public rowData$!: BehaviorSubject<ITodo[]>;
   private rowDataSource = new BehaviorSubject<ITodo[]>([]);
   rowData$ = this.rowDataSource.asObservable();
 
-  constructor(private http: HttpClient, private gridActionsService: GridActionsService) { }
+  constructor(
+    private http: HttpClient,
+    private gridActionsService: GridActionsService
+  ) {}
 
   ngOnInit(): void {
     this.rowDataSource.next(todos);
 
-    this.gridActionsService.selectedRows.subscribe(data => {
+    this.gridActionsService.selectedRows.subscribe((data) => {
       this.selectedTodoRows = [...data];
       console.log('data', this.selectedTodoRows);
     });
@@ -57,11 +61,9 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteSelected(): void {
-    this.todoList = this.todoList.filter(todo => {
-      return !this.selectedTodoRows.map(rows => rows.id).includes(todo.id);
-    })
-    this.rowDataSource.next(
-      [...this.todoList]
-    );
+    this.todoList = this.todoList.filter((todo) => {
+      return !this.selectedTodoRows.map((rows) => rows.id).includes(todo.id);
+    });
+    this.rowDataSource.next([...this.todoList]);
   }
 }

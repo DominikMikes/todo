@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@mik/react-list": ["libs/react-list/src/index.ts"],
-      "@todo/todo": ["libs/todo/src/index.ts"],
+      "@todo/ng-list": ["libs/ng-list/src/index.ts"],
       "@todo/ui/grid": ["libs/ui/grid/src/index.ts"]
     }
   },
