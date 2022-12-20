@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { v4 as uuid } from 'uuid';
 import styles from './react-list.module.scss';
-import { ITodo } from "./todo";
-import { TodoService } from './todo-service';
+
+import { ITodo } from '@todo/data-access-todo'
+import { DataAccessTodo as TodoService } from '@todo/data-access-todo';
 
 export function ReactList() {
   const [todos, setTodos] = React.useState([]);

@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "data-access-todo": "libs/data-access-todo",
     "express-backend": "apps/express-backend",
     "ng-list": "libs/ng-list",
     "ng-todo": "apps/ng-todo",
