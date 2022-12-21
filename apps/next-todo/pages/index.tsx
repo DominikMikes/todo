@@ -1,4 +1,6 @@
-import styles from "./index.module.scss";
+import "./index.module.scss";
+
+import React from "react";
 
 export function Index() {
 	/*
@@ -7,7 +9,7 @@ export function Index() {
 	 * Note: The corresponding styles are in the ./index.scss file.
 	 */
 	return (
-		<div className={styles.page}>
+		<div className="page">
 			<div className="wrapper">
 				<div className="container">
 					<div id="welcome">
