@@ -5,7 +5,12 @@ import styles from './react-list.module.scss';
 import { ITodo } from '@todo/data-access-todo'
 import { DataAccessTodo as TodoService } from '@todo/data-access-todo';
 
-export function ReactList() {
+interface reactListProps {
+  theme: string;
+}
+
+export function ReactList({theme}: reactListProps) {
+  
   const [todos, setTodos] = React.useState([]);
   const todoService = new TodoService();
 
@@ -27,10 +32,6 @@ export function ReactList() {
     setTodos(filtered);
   };
 
-  const refreshTodo = () => {
-    return getTodos();
-  };
-
   const getTodoRow = useCallback((todo: ITodo) => {
     return <div key={todo.id}>{todo.description} - {todo.status} 
       <button data-todo-id={todo.id} onClick={() => removeTodo(todo.id)}>X</button>
@@ -44,13 +45,13 @@ export function ReactList() {
     }
   }, [setTodos]);
 
-  useMemo(() => {
+  useEffect(() => {
     getTodos();
   }, []);
 
   return <div className={styles['container']}>
     <button onClick={addTodo}>Add +</button>
-    <button onClick={refreshTodo}>Refresh</button>
+    <button onClick={getTodos}>Refresh</button>
     {
       todos.map((todo: ITodo) => {
         return getTodoRow(todo);

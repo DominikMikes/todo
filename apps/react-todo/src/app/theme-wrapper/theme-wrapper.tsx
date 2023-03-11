@@ -1,6 +1,7 @@
 import { ReactList } from "@mik/react-list";
 import { useCallback, useEffect, useRef, useState } from "react";
-import styles from "./theme-wrapper.module.scss";
+// import styles from "./theme-wrapper.module.scss";
+import './theme-wrapper.css';
 
 /* eslint-disable-next-line */
 export interface ThemeWrapperProps {}
@@ -27,11 +28,11 @@ export function ThemeWrapper(props: ThemeWrapperProps) {
 	}, [theme]);
 
 	return (
-		<div className={`${styles['container']}`}>
-			<button className={(theme === 'light' ? 'light' : 'dark')} onClick={changeTheme}>Theme change</button>
+		<div className={`container ${theme}`}>
+			<button onClick={changeTheme}>Theme change</button>
 			
 			<div>REACT Todo List</div>
-        <ReactList></ReactList>
+        	<ReactList theme={theme}></ReactList>
 		</div>
 	);
 }
