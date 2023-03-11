@@ -1,0 +1,11 @@
+.container {
+    color: black;
+    button {
+        background-color: rgb(29, 29, 29);
+        color: white;
+
+        &.light {
+            background-color: azure;
+        }
+    }
+}
